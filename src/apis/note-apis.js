@@ -6,9 +6,7 @@ export const getAllNotesApi = async (notesFilter) => {
     limit: "25",
     offset: notesFilter.page + 1,
   };
-  console.log("API is called");
   const response = await httpsCall("get", url, body);
-  console.log("response is recieved", response);
   return response.data.data;
 };
 
