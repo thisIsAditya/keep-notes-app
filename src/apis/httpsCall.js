@@ -1,12 +1,12 @@
 import axios from "axios";
-import { handleError } from "reduxstate/error.js";
+import { handleError } from "../redux/reducers/error.js";
 import { store } from "../index";
 const urlPrefix = process.env.REACT_APP_BACKEND_API_BASE_URL;
 
-export const httpCall = async (type, url, data) => {
+export const httpsCall = async (type, url, data) => {
   const requestParams = {
     method: type,
-    url: `${urlPrefix}/${url}`,
+    url: `${urlPrefix}/api/${url}`,
   };
 
   if (data) {

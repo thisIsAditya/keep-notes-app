@@ -1,24 +1,25 @@
 import { httpsCall } from "./httpsCall";
 
-export const getAllNotes = async (notesFilter) => {
-  const url = "/";
+export const getAllNotesApi = async (notesFilter) => {
+  const url = "notes/";
   const body = {
     limit: "25",
     offset: notesFilter.page + 1,
   };
-
+  console.log("API is called");
   const response = await httpsCall("get", url, body);
+  console.log("response is recieved", response);
   return response.data.data;
 };
 
-export const getNote = async (noteId) => {
-  const url = `/${noteId}`;
+export const getNoteApi = async (noteId) => {
+  const url = `notes/${noteId}`;
   const response = await httpsCall("get", url, {});
   return response.data.data;
 };
 
-export const createNote = async (noteDetails) => {
-  const url = "/";
+export const createNoteApi = async (noteDetails) => {
+  const url = "notes/";
   const body = {
     text: noteDetails.text,
     priority: noteDetails.priority,
@@ -28,8 +29,8 @@ export const createNote = async (noteDetails) => {
   return response.data.data;
 };
 
-export const updateNote = async (noteDetails) => {
-  const url = `/${noteDetails.id}`;
+export const updateNoteApi = async (noteDetails) => {
+  const url = `notes/${noteDetails.id}`;
   const body = {
     text: noteDetails.text,
     priority: noteDetails.priority,
@@ -39,8 +40,8 @@ export const updateNote = async (noteDetails) => {
   return response.data.data;
 };
 
-export const deleteNote = async (noteId) => {
-  const url = `/${noteId}`;
+export const deleteNoteApi = async (noteId) => {
+  const url = `notes/${noteId}`;
   const response = await httpsCall("delete", url, {});
   return response.data;
 };
