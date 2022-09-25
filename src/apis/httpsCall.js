@@ -18,9 +18,6 @@ export const httpCall = async (type, url, data) => {
     return response;
   } catch (e) {
     console.log(e.response);
-    if (!url.includes("meetings/")) {
-      return;
-    }
     const statusCode = e.response.status;
     switch (statusCode) {
       case 400:
