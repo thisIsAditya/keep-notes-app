@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "underscore": "lodash",
+          "apis": "./src/apis",
+          "components": "./src/components",
+          "constants": "./src/constants",
+          "mui-components": "./src/mui-components",
+          "layout": "./src/layout",
+          "reduxstate": "./src/redux"
+        }
+      }
+    ]
+  ]
+}
