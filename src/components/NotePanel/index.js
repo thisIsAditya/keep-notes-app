@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserNotes } from "../../redux/reducers/notes";
 import NewNote from "../NewNote";
@@ -11,15 +10,15 @@ const NotePanel = () => {
 
   useEffect(() => {
     dispatch(getUserNotes());
-  }, []);
+  }, [dispatch]);
 
   return (
-    <Container>
+    <>
       {noteList.map((note) => (
         <NoteCard key={note.id} noteId={note.id} />
       ))}
       <NewNote />
-    </Container>
+    </>
   );
 };
 
