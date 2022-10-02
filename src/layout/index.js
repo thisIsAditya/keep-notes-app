@@ -1,6 +1,6 @@
-import SideBar from "components/SideBar";
+import SideBar from 'components/SideBar';
 
-const Layout = (Comp) => {
+const Layout = Comp => {
   return (
     <div>
       <SideBar />
