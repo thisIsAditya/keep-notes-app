@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addNote } from "../../redux/reducers/notes";
 import "./index.css";
@@ -9,7 +9,7 @@ const NewNote = () => {
   };
   return (
     <>
-      <Button id="new-note-btn" variant="primary" onClick={handleAddNewNote}>
+      <Button size="small" onClick={handleAddNewNote}>
         New Note
       </Button>
     </>

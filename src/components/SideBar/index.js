@@ -2,12 +2,7 @@ import { Drawer } from "@mui/material";
 
 const SideBar = () => {
   return (
-    <Drawer
-      variant="temporary"
-      ModalProps={{
-        keepMounted: true,
-      }}
-    />
+    <Drawer variant="persistant" anchor="left" PaperProps={{ elevation: 2 }} />
   );
 };
 

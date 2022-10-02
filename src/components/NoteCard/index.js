@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { priorityToDataMap } from "../../constants";
-import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { deleteNote, saveNote } from "../../redux/reducers/notes";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import { TextareaAutosize } from "@mui/material";
+
 const NoteCard = ({ noteId }) => {
   const dispatch = useDispatch();
   const noteDetails = useSelector((state) =>
     state.notes.noteList.find((note) => note.id === noteId)
   );
   const [noteText, setNoteText] = useState(noteDetails.text);
-  const variant = priorityToDataMap[noteDetails.priority].variant;
 
   const handleTextAreaChange = (e) => {
     setNoteText(e.target.value);
@@ -29,29 +30,27 @@ const NoteCard = ({ noteId }) => {
     dispatch(deleteNote(noteDetails.id));
   };
   return (
-    <Card
-      bg={variant.toLowerCase()}
-      key={variant}
-      text={variant.toLowerCase() === "light" ? "dark" : "white"}
-      style={{ width: "18rem" }}
-      className="mb-2"
-    >
-      <Card.Header>
-        <Button variant="success" onClick={handleSave}>
-          Save
-        </Button>
-        <Button variant="danger" onClick={handleDelete}>
-          Delete
-        </Button>
-      </Card.Header>
-      <Card.Body>
-        <Form.Control
-          as="textarea"
-          value={noteText}
-          onChange={handleTextAreaChange}
-        />
-      </Card.Body>
-    </Card>
+    <>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          <TextareaAutosize
+            maxRows={4}
+            placeholder="Start typing your notes"
+            defaultValue={noteText}
+            onChange={handleTextAreaChange}
+            style={{ width: 200 }}
+          />
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={handleSave}>
+            Save
+          </Button>
+          <Button size="small" onClick={handleDelete}>
+            Delete
+          </Button>
+        </CardActions>
+      </Card>
+    </>
   );
 };
 
