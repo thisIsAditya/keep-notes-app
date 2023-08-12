@@ -47,20 +47,21 @@ export const notes = createSlice({
       if (index > -1) {
         state.noteList[index] = note;
       } else {
-        state.noteList = [...state.noteList, note];
+        state.noteList.push(note);
       }
     },
     updateNote: (state, { payload }) => {
-      const noteIndex = state.noteList.findIndex(note => note.id === payload.id);
+      const noteIndex = state.noteList.findIndex(note => note.id === payload._id);
       const note = {
-        id: payload.id,
+        id: payload._id,
         text: payload.text,
         priority: payload.priority,
       };
       if (noteIndex > -1) {
         state.noteList[noteIndex] = note;
       } else {
-        state.noteList = [...state.noteList, note];
+        state.noteList.pop();
+        state.noteList.push(note);
       }
     },
     removeNote: (state, { payload }) => {
@@ -74,7 +75,8 @@ export const notes = createSlice({
       })
       .addCase(getUserNotes.fulfilled, (state, { payload }) => {
         if (payload?.length) {
-          state.noteList = Array.from(new Set([...state.noteList, ...payload]));
+          const syncedNoteList = payload.map(({ _id, ...note }) => ({ ...note, id: _id }));
+          state.noteList = syncedNoteList;
         }
         state.loading = false;
       })

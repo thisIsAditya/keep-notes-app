@@ -1,20 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { deleteNote, saveNote } from "../../redux/reducers/notes";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import { TextareaAutosize } from "@mui/material";
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { deleteNote, saveNote } from '../../redux/reducers/notes';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import { TextareaAutosize } from '@mui/material';
 
 const NoteCard = ({ noteId }) => {
   const dispatch = useDispatch();
-  const noteDetails = useSelector((state) =>
-    state.notes.noteList.find((note) => note.id === noteId)
-  );
-  const [noteText, setNoteText] = useState(noteDetails.text);
+  const noteDetails = useSelector(state => state.notes.noteList.find(note => note.id === noteId));
+  const [noteText, setNoteText] = useState(noteDetails.text || '');
 
-  const handleTextAreaChange = (e) => {
+  const handleTextAreaChange = e => {
     setNoteText(e.target.value);
   };
   const handleSave = () => {
