@@ -10,7 +10,7 @@ const NotePanel = () => {
 
   useEffect(() => {
     dispatch(getUserNotes());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
