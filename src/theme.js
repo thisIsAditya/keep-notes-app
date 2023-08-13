@@ -1,7 +1,7 @@
 const { createTheme } = require('@mui/material');
 const { convertPxToRem } = require('constants');
 
-export const theme = mode =>
+export const theme = () =>
   createTheme({
     leftbar: '5vh',
     spacing: 4,
