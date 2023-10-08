@@ -29,10 +29,10 @@ const NoteCard = ({ noteId }) => {
   };
   return (
     <>
-      <Card sx={{ minWidth: 275 }}>
+      <Card>
         <CardContent>
           <TextareaAutosize
-            maxRows={4}
+            maxRows={2}
             placeholder="Start typing your notes"
             defaultValue={noteText}
             onChange={handleTextAreaChange}
