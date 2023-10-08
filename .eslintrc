@@ -41,6 +41,7 @@
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "off" // Checks effect dependencies
   },
+  "presets": ["@babel/preset-react"],
   "plugins": ["prettier", "fp", "react", "jsx-a11y", "import", "react-hooks"],
   "settings": {
     "import/resolver": {
