@@ -2,7 +2,7 @@ import SideBar from 'components/SideBar';
 import styled from 'styled-components';
 
 const StyledContent = styled('div')(() => ({
-  position: 'fixed',
+  position: 'absolute',
   left: '5vw',
 }));
 
